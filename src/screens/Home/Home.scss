@@ -1,0 +1,62 @@
+canvas {
+  width: 100vw;
+  height: 100vh;
+}
+
+.top-bar {
+  position: absolute;
+  width: 100vw;
+  height: 6rem;
+  background: #3147b6;
+  z-index: 110;
+  display: flex;
+  align-items: center;
+}
+
+.farm-text {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-left: 1rem;
+  color: white;
+}
+
+.main-top-bar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.plant-button {
+  position: absolute;
+  margin-top: 5rem;
+  left: 1rem;
+  z-index: 120;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.activity-log {
+  margin-top: 10rem;
+}
+
+.plant-status {
+}
+
+.activity-card {
+  margin: 0.8rem 0rem;
+  padding: 0.4rem 1rem;
+  border-radius: 20px !important;
+}
+
+.activity-log-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: rgb(70, 70, 70);
+}
+
+.left-section {
+  position: absolute;
+  right: 4rem;
+  top: 20vh;
+}

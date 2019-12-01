@@ -1,0 +1,18 @@
+{
+    "capacity": number,
+    "operation_efficiency": number,
+    "upcoming_harvest": number,
+    "frames":array [
+        {
+            "amount": number, // number of plants (fake)
+            "plant": "tomato", // konsa plant 
+            "temperature": 23.7, // temp avg
+            "humidity": 75, // humidity avg
+            "luminosity": , // (fake)
+            "moisture", // (fake)
+            "ph", // (fake),
+            “stage”: string, // stage of plant in growth 
+            “days”: number // number of days since plantation
+        },
+    ]
+}
