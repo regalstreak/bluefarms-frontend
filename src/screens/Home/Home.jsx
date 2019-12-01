@@ -5,24 +5,33 @@ import { useSpring, a } from 'react-spring/three';
 import Fab from '@material-ui/core/Fab'
 import Card from '@material-ui/core/Card';
 
-import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import {
     MuiPickersUtilsProvider,
-    KeyboardTimePicker,
     KeyboardDatePicker,
 } from '@material-ui/pickers';
 
+import { markets } from './home'
+
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import { TextField } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import { fetchPotato } from '../../networking/azure';
 
 export default (props) => {
     const [plantClicked, setPlantClicked] = useState(false);
 
-    const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
+    const [selectedDate, setSelectedDate] = React.useState(Date.now());
 
     const handleDateChange = date => {
         setSelectedDate(date);
     };
 
+    const [autoMarket, setAutoMarket] = useState('');
+
+    function findAllPlants() {
+        fetchPotato(2, 2);
+    }
 
     return (
         <div className='Home'>
@@ -31,35 +40,49 @@ export default (props) => {
                 <div className="main-top-bar">
                     <div className="farm-text">Rushab's farm</div>
                     <div className="plant-button">
-                        <Fab onClick={() => { setPlantClicked(true) }} color='secondary' variant='extended'>
-                            Plant
-                        </Fab>
+
                         {
                             plantClicked ? <div>
-                                questions
-
                                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                                    <Grid container justify="space-around">
-                                        <KeyboardDatePicker
-                                            disableToolbar
-                                            variant="inline"
-                                            format="MM/dd/yyyy"
-                                            margin="normal"
-                                            id="date-picker-inline"
-                                            label="Date picker inline"
-                                            value={selectedDate}
-                                            onChange={handleDateChange}
-                                            KeyboardButtonProps={{
-                                                'aria-label': 'change date',
-                                            }}
-                                        />
-                                    </Grid>
+                                    <KeyboardDatePicker
+                                        disableToolbar
+                                        variant="inline"
+                                        format="MM/dd/yyyy"
+                                        margin="normal"
+                                        id="date-picker-inline"
+                                        label="Time to harvest"
+                                        value={selectedDate}
+                                        onChange={handleDateChange}
+                                        KeyboardButtonProps={{
+                                            'aria-label': 'change date',
+                                        }}
+                                    />
                                 </MuiPickersUtilsProvider>
 
+                                <Autocomplete
+                                    id="combo-box-demo"
+                                    options={markets}
+                                    onChange={(e, value) => { setAutoMarket(value) }}
+                                    value={autoMarket}
+                                    getOptionLabel={option => option}
+                                    renderInput={params => (
+                                        <TextField {...params} label="Market to sell" fullWidth />
+                                    )}
+                                />
 
+                                <div className="plant-question-buttons">
+                                    <Button size='small' variant='outlined' onClick={() => { setPlantClicked(false) }}>
+                                        Cancel
+                                     </Button>
+                                    <Button size='small' variant='outlined' onClick={() => { findAllPlants() }}>
+                                        Go ahead
+                                    </Button>
+                                </div>
+                            </div> :
 
-                                <div onClick={() => { setPlantClicked(false) }}>x</div>
-                            </div> : null
+                                <Fab onClick={() => { setPlantClicked(true) }} color='secondary' variant='extended'>
+                                    Plant
+                                </Fab>
                         }
                     </div>
                 </div>

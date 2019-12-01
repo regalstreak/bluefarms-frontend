@@ -32,12 +32,14 @@ canvas {
   left: 1rem;
   z-index: 120;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .activity-log {
   margin-top: 10rem;
+  color: c;
 }
 
 .plant-status {
@@ -59,4 +61,12 @@ canvas {
   position: absolute;
   right: 4rem;
   top: 20vh;
+}
+
+.plant-question-buttons {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }
