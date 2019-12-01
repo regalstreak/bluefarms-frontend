@@ -18,6 +18,8 @@ canvas {
   font-weight: 600;
   margin-left: 1rem;
   color: white;
+  display: flex;
+  align-items: center;
 }
 
 .main-top-bar {
@@ -69,4 +71,37 @@ canvas {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+}
+
+.stack-info {
+  position: absolute;
+  font-size: 1.2rem;
+  top: 40%;
+  left: 16%;
+}
+
+.stack-card {
+  padding: 1rem;
+}
+
+.mainParams {
+  font-size: 1rem;
+  margin-left: 3rem;  
+  display:flex
+}
+
+.singleMainParam {
+  margin-left: 5rem;
+  width: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.singleMainParamAnswer {
+  font-size: 2rem;
+  margin-left: 2rem;    
+  justify-content: center;
+  text-align: center;
+  display: flex;
 }

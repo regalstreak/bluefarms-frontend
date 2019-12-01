@@ -2,8 +2,8 @@ import React from 'react';
 
 export default (props) => {
     return (
-        <div>
-            <h2>Hello Activity</h2>
+        <div style={{marginLeft: 100}}>
+            <h2>Activity</h2>
         </div>
     )
 }

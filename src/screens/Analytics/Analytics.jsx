@@ -2,8 +2,8 @@ import React from 'react';
 
 export default (props) => {
     return (
-        <div>
-            <h2>Hello Analytics</h2>
+        <div style={{marginLeft: 100}}>
+            <h2>Analytics</h2>
         </div>
     )
 }

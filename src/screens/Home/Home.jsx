@@ -21,7 +21,7 @@ import { fetchPotato } from '../../networking/azure';
 export default (props) => {
     const [plantClicked, setPlantClicked] = useState(false);
 
-    const [selectedDate, setSelectedDate] = React.useState(Date.now());
+    const [selectedDate, setSelectedDate] = React.useState(null);
 
     const handleDateChange = date => {
         setSelectedDate(date);
@@ -33,12 +33,35 @@ export default (props) => {
         fetchPotato(2, 2);
     }
 
+    const [stackHovered, setStackHovered] = useState(1)
+
+    const parentHovered = (data) => {
+        setStackHovered(data)
+    }
+
     return (
         <div className='Home'>
             <div className="top-bar">
                 <img src={require('../../assets/bluefarms_logo.svg')} width={70} alt='bluefarms logo' />
                 <div className="main-top-bar">
-                    <div className="farm-text">Rushab's farm</div>
+                    <div className="farm-text">Rushab's farm
+                    <div className='mainParams'>
+
+                            <div className='singleMainParam'>
+                                Planting Capacity
+                             </div>
+                             <div className="singleMainParamAnswer">90%</div>
+                            <div className='singleMainParam'>
+                                Operational Efficiency
+                             </div>
+                             <div className="singleMainParamAnswer">80%</div>
+                            <div className='singleMainParam'>
+                                Upcoming Harvests
+                              </div>
+                             <div className="singleMainParamAnswer">19</div>
+
+                        </div>
+                    </div>
                     <div className="plant-button">
 
                         {
@@ -47,7 +70,7 @@ export default (props) => {
                                     <KeyboardDatePicker
                                         disableToolbar
                                         variant="inline"
-                                        format="MM/dd/yyyy"
+                                        format="dd/MM/yyyy"
                                         margin="normal"
                                         id="date-picker-inline"
                                         label="Time to harvest"
@@ -99,31 +122,46 @@ export default (props) => {
                 </div>
             </div>
 
-            <WebGL />
+            <Canvas orthographic camera={{ position: [0, 0, 10], zoom: 80 }} >
+
+                <Frame parentHovered={parentHovered} id={3} position={[0, 1.4, 0]} />
+                <Frame parentHovered={parentHovered} id={2} position={[0, 0, 0]} />
+                <Frame parentHovered={parentHovered} id={1} position={[0, -1.4, 0]} />
+
+                <ambientLight />
+                <spotLight position={[2, 2, 2]} />
+            </Canvas>
+
+
+            <div className="stack-info">
+
+                <Card className='stack-card'>
+                    Stack {stackHovered}<br />
+                    Ambient Temperature: 26 <br />
+                    Crop Varieties: 02<br />
+                    Alerts: 0<br />
+                </Card>
+            </div>
 
         </div>
     )
 }
 
 
-const WebGL = () => (
-    <Canvas orthographic camera={{ position: [0, 0, 10], zoom: 80 }} >
-
-        <Frame position={[0, 1.4, 0]} />
-        <Frame position={[0, 0, 0]} />
-        <Frame position={[0, -1.4, 0]} />
-
-        <ambientLight args={[0x404040, 20]} />
-    </Canvas>
-)
+const WebGL = () => {
+}
 
 const Frame = (props) => {
     const [hovered, setHovered] = useState(false);
 
     const { color, scale } = useSpring({
-        color: hovered ? 'cadetblue' : 'cyan',
+        color: hovered ? 'dodgerblue' : 'cyan',
         scale: hovered ? [1.1, 1.1, 1.1] : [1, 1, 1]
     })
+
+    if (hovered) {
+        props.parentHovered(props.id)
+    }
 
     return (
         <a.mesh
@@ -135,7 +173,7 @@ const Frame = (props) => {
 
         >
             <a.boxBufferGeometry attach='geometry' args={[2.7, 0.7, 3.5]} />
-            <a.meshBasicMaterial color={color} attach='material' />
+            <a.meshPhysicalMaterial color={color} attach='material' />
         </a.mesh>
     )
 }

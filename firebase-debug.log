@@ -1,0 +1,23 @@
+[debug] [2019-12-01T02:51:43.072Z] ----------------------------------------------------------------------
+[debug] [2019-12-01T02:51:43.074Z] Command:       /home/regalstreak/.config/nvm/versions/node/v12.12.0/bin/node /home/regalstreak/.yarn/bin/firebase deploy
+[debug] [2019-12-01T02:51:43.074Z] CLI Version:   7.6.2
+[debug] [2019-12-01T02:51:43.074Z] Platform:      linux
+[debug] [2019-12-01T02:51:43.074Z] Node Version:  v12.12.0
+[debug] [2019-12-01T02:51:43.074Z] Time:          Sun Dec 01 2019 08:21:43 GMT+0530 (India Standard Time)
+[debug] [2019-12-01T02:51:43.074Z] ----------------------------------------------------------------------
+[debug] [2019-12-01T02:51:43.074Z] 
+[debug] [2019-12-01T02:51:43.079Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-12-01T02:51:43.079Z] > authorizing via signed-in user
+[debug] [2019-12-01T02:51:43.080Z] [iam] checking project bluefarmsos for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2019-12-01T02:51:43.081Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/bluefarmsos:testIamPermissions  
+
+[debug] [2019-12-01T02:51:44.775Z] <<< HTTP RESPONSE 200
+[debug] [2019-12-01T02:51:44.781Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/bluefarmsos  
+ 
+[debug] [2019-12-01T02:51:45.174Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'bluefarmsos'...
+[info] 
+[info] i  deploying hosting
+[debug] [2019-12-01T02:51:45.180Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/bluefarmsos/versions  
+
